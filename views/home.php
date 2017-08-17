@@ -6,7 +6,12 @@
         include_once '../classes/Db.class.php';
         include_once '../classes/User.class.php';
         $userid = $_SESSION['user'];
-        $projectid = $_GET['project'];
+        if (isset($_GET['project'])){
+            $projectid = $_GET['project'];
+        }else{
+            $projectid = 0;
+        }
+        
         
         try {
             $conn = Db::connect();

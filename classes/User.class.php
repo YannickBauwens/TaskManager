@@ -9,6 +9,7 @@ class User
 		private $m_sPassword;
         private $m_aErrors;
         private $m_sConfirm_password;
+        private $m_sProfileImg;
         private $m_iAdmin;
         
 
@@ -81,6 +82,9 @@ class User
                         throw new Exception("password can't be empty!");
                     }
 				break;
+                case "ProfileImg":
+                    $this->m_sProfileImg = $p_vValue;
+                break;
                 case "Admin":
                     $this->m_iAdmin = $p_vValue;
                 break;
@@ -116,6 +120,9 @@ class User
                 case 'ConfirmPassword':
                     return($this->m_sConfirm_password);
                 break; 
+                case "ProfileImg":
+                    return($this->m_sProfileImg);
+                break;
                 case 'Admin':
                     return($this->m_iAdmin);
                 break; 
@@ -136,7 +143,7 @@ class User
 
                 $hashedPw = password_hash($this->m_sPassword, PASSWORD_DEFAULT);
 
-                $data = $conn->query("INSERT INTO users(firstname, lastname, username, email, password, Admin) VALUES(" . $conn->quote($this->m_sFirstname) . ", ". $conn->quote($this->m_sLastname) .",". $conn->quote($this->m_sUsername) .",". $conn->quote($this->m_sEmail) .",". $conn->quote($hashedPw) . ",". $conn->quote($this->m_iAdmin) .")");
+                $data = $conn->query("INSERT INTO users(firstname, lastname, username, email, password, profile_img, Admin) VALUES(" . $conn->quote($this->m_sFirstname) . ", ". $conn->quote($this->m_sLastname) .",". $conn->quote($this->m_sUsername) .",". $conn->quote($this->m_sEmail) .",". $conn->quote($hashedPw) . ",". $conn->quote($this->m_sProfileImg) . ",". $conn->quote($this->m_iAdmin) .")");
                 header("Location: login.php");
             }
 		}

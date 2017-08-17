@@ -36,4 +36,35 @@
             }  
             ?>
         </ul>
+        
+        <div class="adminMenu">
+            <?php if($adminornot == 1){ ?>
+                <h3>Admin Menu</h3>
+
+                <form action='' method='post'>
+                    <input type='text' name='course' class='textfield' placeholder='course'><br>
+                    <input type='submit' class='btn btn-primary' name='courseform' value='Add Course'/>
+                </form>
+                
+                <form action='' method='post'>
+                    <select name="courses" >
+                        <option value="empty">--</option>
+                        <option value="webtechnologie">Webtechnologie</option>
+                        <option value="cms">CMS</option>
+                    </select><br>
+                    <input type='submit' class='btn btn-primary' name='courseform' value='Delete Course'/>
+                </form>
+                
+                <form action='' method='post'>
+                    <select name="persons" >
+                        <option value="empty">--</option>
+                        <option value="frans">Frans</option>
+                        <option value="louis">Louis</option>
+                        <option value="jefke">Jefke</option>
+                        <option value="ben">Ben</option>
+                    </select><br>
+                    <input type='submit' class='btn btn-primary' name='courseform' value='Make admin'/>
+                </form>
+            <?php } ?>
+        </div>
 </aside>

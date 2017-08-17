@@ -55,14 +55,14 @@
             
             
             <div class="formAddProject">
-                <!--<
-                echo "<form action='home.php?project=" . $project['projectid'] . "' method='post' id='registerform'>"
-                ?>-->
                 <form action="" method="post" id="registerform">
-                   <input type="text" name="taskname" class="textfield" placeholder="Project name"><br>
-                   <input type="text" name="deadline" id="date2" alt="date" class="IP_calendar" title="Y-m-d" placeholder="Deadline">
-                   <button class="btn btn-primary">Add Task</button><br><br>
-                   <a href="../views/home.php">terug</a>
+                   <h3 class="test">Add a task</h3>
+                   <div class="lowerForm">
+                       <input type="text" name="taskname" class="textfield" placeholder="Project name">
+                       <input type="text" name="deadline" id="date2" alt="date" class="IP_calendar" title="Y-m-d" placeholder="Deadline">
+                       <button class="btn btn-primary">Add Task</button><br><br>
+                       <a href="../views/home.php">terug</a>
+                   </div>
                </form>
                
            </div>

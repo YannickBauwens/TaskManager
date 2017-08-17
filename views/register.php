@@ -13,6 +13,7 @@
             $user->Email = $_POST['register_email'];
             $user->Password = $_POST['register_password'];
             $user->ConfirmPassword = $_POST['confirm_register_password'];
+            $user->ProfileImg = "../images/avatar.png";
             $user->Admin = $_POST['useradmin'];
 		    $user->register();
         }

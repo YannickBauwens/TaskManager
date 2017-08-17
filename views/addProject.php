@@ -61,14 +61,16 @@
             
             <div class="formAddProject">
                 <form action="" method="post" id="registerform">
-
-                   <input type="text" name="projectname" class="textfield" placeholder="Project name"><br>
-                   <select name="course" >
-                       <option value="webtechnologie">Webtechnologie</option>
-                       <option value="cms">CMS</option>
-                   </select><br>
-                   <button class="btn btn-primary">Add project</button><br><br>
-                   <a href="../views/home.php">terug</a>
+                    <h3 class="test">Add a project</h3>
+                    <div class="lowerForm">
+                       <input type="text" name="projectname" class="textfield" placeholder="Project name"><br>
+                       <select name="course" >
+                           <option value="webtechnologie">Webtechnologie</option>
+                           <option value="cms">CMS</option>
+                       </select><br>
+                       <button class="btn btn-primary">Add project</button><br><br>
+                       <a href="../views/home.php">terug</a>
+                   </div>
                </form>
            </div>
         </div>
