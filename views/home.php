@@ -1,11 +1,20 @@
 <?php 
     session_start();
     if(empty($_SESSION['user'])){
-        header("Location: index.php");
+        header("Location: login.php");
     }else{
         include_once '../classes/Db.class.php';
         include_once '../classes/User.class.php';
         $userid = $_SESSION['user'];
+        $projectid = $_GET['project'];
+        
+        try {
+            $conn = Db::connect();
+            $tasks = $conn->query("SELECT name, deadline, userid, taskid FROM tasks WHERE projectid = $projectid ORDER BY deadline ASC;");
+             
+        } catch(PDOException $e) {
+            echo 'ERROR: ' . $e->getMessage();
+        }
     }
 ?>
 
@@ -16,8 +25,8 @@
     <meta charset="UTF-8">
     <title>TaskManager</title>
     <link rel="stylesheet" href="../css/reset.css">
-    <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/bootstrap.css">
+    <link rel="stylesheet" href="../css/style.css">
     <script type="text/javascript" src="../js/jquery-3.1.0.min.js"></script>
     <script type="text/javascript" src="../js/script.js"></script>
     <script type="text/javascript" src="../js/bootstrap.js"></script>
@@ -25,48 +34,44 @@
     <link href='https://fonts.googleapis.com/css?family=Amatic+SC' rel='stylesheet' type='text/css'>
 </head>
 
-<?php
-        try {
-            $conn = Db::connect();
-            $userdata = $conn->query("SELECT * FROM users WHERE id = $userid;");
-            $users = $conn->query("SELECT username,profile_img FROM users;");
-            $usersadmin = $conn->query("SELECT username,id FROM users;");
-            foreach ($userdata as $row) {
-                $loggedinuser = $row['username'];
-                $profileloc = $row['profile_img'];
-                $adminornot = $row['Admin'];
-            }         
-        } catch(PDOException $e) {
-        echo 'ERROR: ' . $e->getMessage();
-    }
-?>
-
 
 <body>
-    <div class="homeLeft">
-        <div class="center">
-            <?php
-                echo "<div class='loggedinimg'><img src='$profileloc' alt='avatar logged in user'></div>";
-                echo "<div><h5>$loggedinuser</h5></div>";
-            ?> 
-            <a href="logout.php">Log out</a>
-        </div>
-    </div>
-    
-    <div class="homeRight">
-        <div class="homeRightTop">
-            <a href="#" class="btn btn-primary btn-primary1">+ Add task</a>
-        </div>
-
-        <div class="homeRightBot">
-            <div class="taskBlock">
-                <h4>hallo</h4>
-                <p>fezgreh</p>
+    <div class="home_page">
+       <?php
+            include '../includes/menu.php';
+        ?>
+        <div class="content">
+            <div class="header">
+                <?php
+                    echo "<a href='addTask.php?project=". $projectid ."' class='btn btn-primary'>+ Add task</a>";
+                ?>
             </div>
-            <div class="taskBlock">
-                <h4>holla</h4>
-                <p>fezgreh</p>
-            </div>
+            <ul class="task_list">
+               
+               
+                <?php
+                    while ($row = $tasks->fetch(PDO::FETCH_NUM)) {
+                        $task['name'] = $row[0];
+                        $task['deadline'] = $row[1];
+                        $usertask = $task['userid'] = $row[2];
+                        $task['taskid'] = $row[3];
+                        $users = $conn->query("SELECT * FROM users WHERE id = $usertask;"); 
+                        foreach ($users as $row) {
+                            $taskCreator = $row['username'];
+                        }   
+                        echo "<li><a href='home.php?task=" . $task['taskid'] . "'>" . $task['name'] . "</a><h4>Deadline due " . $task['deadline'] . "</h4><h4>By " . $taskCreator . "</h4></li>";
+                    }  
+                ?>
+                <!--
+                <li>
+                    <a href="">Wireframes maken</a>
+                    <h4>Deadline 4th October</h4>
+                </li>
+                <li>
+                    <a href="">Weerapp</a>
+                    <h4>Deadline 9th September</h4>
+                </li>-->
+            </ul>   
         </div>
     </div>
     

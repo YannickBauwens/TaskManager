@@ -58,7 +58,7 @@
                         <label id="login1" for="confirm_register_password">Confirm password</label>
                         <input type="password" name="confirm_register_password" class="textfield" placeholder="Confirm password"><br>
                         <input type="hidden" value="0" name="useradmin">
-                        <button type="submit" class="btn btn-small btn-success">Register</button><br>
+                        <button type="submit" class="btn btn-primary">Register</button><br>
 
                         <a href="login.php" class="return">Go back to log in page.</a>
                     </form>

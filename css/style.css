@@ -86,10 +86,11 @@ label{
     font-size:1em;
 }
 
-.loggedinimg{
-    width: 100px;
+.loggedinimg img{
+    width: 150px;
     margin-left: auto;
     margin-right: auto;
+    border-radius: 75px;
 }
 
 .center{
@@ -99,45 +100,120 @@ label{
     text-align: center;
 }
 
-.homeLeft{
-    float:left;
-    border-right: solid 2px whitesmoke;
-    background-color: white;
-    height: 100vh;
-    width: 300px;
+.home_page{
+    display:flex;
+    flex-direction: row;
 }
 
-.taskBlock{
-    margin-top: -10px;
-    padding-bottom: 5px;
-    border-bottom: solid 1px whitesmoke;
+aside{
+    height:100vh;
+    padding:20px;
+    border-right:0.5px solid #E2E2E2;
+    width:300px;
 }
 
-.taskBlock h4, .taskBlock p{
-    padding-left: 100px;
+.profile_info{
+    display:block;
+    width:220px;
+    margin-left:auto;
+    margin-right:auto;
+    text-align: center;
 }
 
-.taskBlock h4{
-    padding-top: 10px;
+.profile_info h2{
+    font-weight:500;
+    font-size:1.1em;
+    margin-top:30px;
 }
 
-.btn-primary1{
-    margin-top: 20px;
-    float:right;
+.project_list{
+    padding:0;
+}
+
+.project_list li{
+    list-style-type: none;
+    font-size:1.0em;
+    padding:20px;
+    color:#D8D8D8;
+    font-weight:400;
+}
+
+.project_list a{
+    text-decoration: none;
+    color:gray;
+}
+
+.btn a{
+    color:white;
+}
+
+h4{
+    font-size:1.0em;
+    color:#D8D8D8;
+    margin-top:4px;
+}
+
+.task_list{
+    padding:0px;
+}
+
+.task_list li{
+    list-style-type: none;
+    font-size:1.0em;
+    padding:20px;
+    color:#D8D8D8;
+    font-weight:400;
+    border-top:0.5px solid #E2E2E2;
+}
+
+.task_list li a{
+    text-decoration: none;
+    color:gray;
+}
+
+.header{
+    height:60px;
+}
+
+.content{
+    width:calc(100vw - 300px);
+}
+
+.content1{
+    width:calc(100vw - 300px);
+    background-image: url(../images/background.png);
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+.header a{
+    float: right;
     margin-right: 50px;
+    margin-top: 15px;
 }
 
-.homeRight{
-    margin-left: 300px;
-    
+.btnMenu{
+    margin-left: 44px;
+    margin-top: 25px;
+    margin-bottom: 20px;
 }
 
-.homeRightTop{
-    background-color: whitesmoke;
-    padding-left: 100px;
-    height: 70px;
+.formAddProject{
+    width: 300px;
+    height: 300px;
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+    background-color: white;
+    margin-top: 200px;
+    box-shadow: 0px 0px 40px #333333;
+    border-radius: 5px;
 }
 
-.homeRightBot{
-    background-color: #E4E4E4;
+.formAddProject form{
+    margin-left: 40px;
+}
+
+.formAddProject form input{
+    margin-top: 90px;
 }
