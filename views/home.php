@@ -10,6 +10,7 @@
             $projectid = $_GET['project'];
         }else{
             $projectid = 0;
+            
         }
         
         
@@ -48,7 +49,24 @@
         <div class="content">
             <div class="header">
                 <?php
-                    echo "<a href='addTask.php?project=". $projectid ."' class='btn btn-primary'>+ Add task</a>";
+                    echo "<a href='addTask.php?project=". $projectid ."' class='btn btn-primary' id='taskvisible'>+ Add task</a>";
+                    if (isset($_GET['project'])){
+                        if($_GET['project'] == 0){
+                            ?>
+                            <script language="javascript">
+                                document.getElementById("taskvisible").style.display = "none";
+                            </script>
+                        <?
+                            echo "<h2 class='homemessage'>Add or go to a project to get started<span>.</span></h2>";
+                        }
+                    }else{
+                    ?>
+                        <script language="javascript">
+                            document.getElementById("taskvisible").style.display = "none";
+                        </script>
+                    <?
+                        echo "<h2 class='homemessage'>Add or go to a project to get started<span>.</span></h2>";
+                    }
                 ?>
             </div>
             <ul class="task_list">

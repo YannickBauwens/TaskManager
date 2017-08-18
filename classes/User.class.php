@@ -257,6 +257,28 @@ class User
             }
             return null;
         }   
+    
+        public function makeadmin($useradminid)
+        {
+            
+                $conn = new PDO('mysql:host=localhost;dbname=TaskManager', "root", "");
+				$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+                $data = $conn->query("UPDATE users SET Admin = 1 WHERE id=$useradminid");
+                header("Refresh:0");
+            
+		}
+    
+        public function deleteadmin($usernotadminid)
+        {
+            
+                $conn = new PDO('mysql:host=localhost;dbname=TaskManager', "root", "");
+				$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+                $data = $conn->query("UPDATE users SET Admin = 0 WHERE id=$usernotadminid");
+                header("Refresh:0");
+            
+		}
         
 }
 ?>

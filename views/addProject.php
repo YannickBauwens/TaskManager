@@ -10,7 +10,7 @@
     }
 
 
-    if(!empty($_POST))
+    if(!empty($_POST['addproject']))
     {
         try
         {  
@@ -23,6 +23,7 @@
             
             $conn = Db::connect();
             $projects = $conn->query("SELECT projectid FROM projects ORDER BY projectid DESC LIMIT 1;");
+
             foreach ($projects as $row) {
                 $activeproject = $row['projectid'];
             }   
@@ -65,11 +66,19 @@
                     <div class="lowerForm">
                        <input type="text" name="projectname" class="textfield" placeholder="Project name"><br>
                        <select name="course" >
-                           <option value="webtechnologie">Webtechnologie</option>
-                           <option value="cms">CMS</option>
+                           <option value="empty">-- Select course</option>
+                           <?php 
+                                $conn = Db::connect();
+                                $course = $conn->query("SELECT coursename FROM courses;");
+                                while ($row = $course->fetch(PDO::FETCH_NUM)){
+                                $row['coursename'] = $row[0];
+                                echo "<option value=". $row['coursename'] .">" . $row['coursename'] . "</option>";
+                                }
+                           ?>
                        </select><br>
-                       <button class="btn btn-primary">Add project</button><br><br>
-                       <a href="../views/home.php">terug</a>
+                       
+                       <input type='submit' class='btn btn-primary' name='addproject' value='Add Project'/><br><br>
+                       <a href="../views/home.php">Back</a>
                    </div>
                </form>
            </div>

@@ -10,7 +10,7 @@
     }
 
 
-    if(!empty($_POST))
+    if(!empty($_POST['addtask']))
     {
         try
         {  
@@ -60,8 +60,8 @@
                    <div class="lowerForm">
                        <input type="text" name="taskname" class="textfield" placeholder="Project name">
                        <input type="text" name="deadline" id="date2" alt="date" class="IP_calendar" title="Y-m-d" placeholder="Deadline">
-                       <button class="btn btn-primary">Add Task</button><br><br>
-                       <a href="../views/home.php">terug</a>
+                       <input type='submit' class='btn btn-primary' name='addtask' value='Add Task'/><br><br><br><br>
+                       <a href="../views/home.php">Back</a>
                    </div>
                </form>
                

@@ -33,6 +33,11 @@ body{
     color: #0045CC;
 }
 
+.homemessage span{
+    color: #0045CC;
+    font-size: 1.5em;
+}
+
 .background{
     background-image: url(../images/background.png);
     background-size: cover;
@@ -224,4 +229,9 @@ h4{
 
 .adminMenu{
     margin-left: 44px;
+}
+
+.homemessage{
+    margin-top: 50px;
+    margin-left: 50px;
 }
