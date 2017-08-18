@@ -78,7 +78,6 @@
                        </select><br>
                        
                        <input type='submit' class='btn btn-primary' name='addproject' value='Add Project'/><br><br>
-                       <a href="../views/home.php">Back</a>
                    </div>
                </form>
            </div>

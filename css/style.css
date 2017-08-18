@@ -1,7 +1,7 @@
 
 body{
     background-color:white;
-    font-family: "Roboto";    
+    font-family: "Roboto";  
 }
 
 .login{
@@ -41,8 +41,7 @@ body{
 .background{
     background-image: url(../images/background.png);
     background-size: cover;
-    background-attachment: fixed;
-    height: 95vh;
+    height:100vh;
 }
 
 .screensize{
@@ -111,7 +110,7 @@ label{
 }
 
 aside{
-    height:100vh;
+    height:100%;
     padding:20px;
     border-right:0.5px solid #E2E2E2;
     width:300px;
@@ -136,11 +135,13 @@ aside{
 }
 
 .project_list li{
-    list-style-type: none;
+    list-style:disc;
     font-size:1.0em;
     padding:20px;
     color:#D8D8D8;
     font-weight:400;
+    padding-top:0px;
+    padding-bottom:10px;
 }
 
 .project_list a{
@@ -154,8 +155,9 @@ aside{
 
 h4{
     font-size:1.0em;
-    color:#D8D8D8;
+    color:#AFAFAF;
     margin-top:4px;
+    font-weight:normal;
 }
 
 .task_list{
@@ -173,7 +175,8 @@ h4{
 
 .task_list li a{
     text-decoration: none;
-    color:gray;
+    color:#494949;
+    font-size:1.2em;
 }
 
 .header{
@@ -195,6 +198,31 @@ h4{
     float: right;
     margin-right: 50px;
     margin-top: 15px;
+}
+
+.colorblue{
+     color:#0045CC;
+     font-size:0.8em;
+     margin-left:10px;
+}
+
+.colorred{
+    color:red;
+    font-size:0.8em;
+    margin-left:10px;
+}
+
+.header img{
+    width: 20px;
+    margin-right: 15px;
+}
+
+.date{
+    float: left;
+    margin-top: 20px;
+    margin-left: 44px;
+    color: #999999;
+    
 }
 
 .btnMenu{

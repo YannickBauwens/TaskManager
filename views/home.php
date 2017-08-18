@@ -47,14 +47,19 @@
             include '../includes/menu.php';
         ?>
         <div class="content">
-            <div class="header">
+            <div class="header" id="invisible">
                 <?php
+                    echo "<div class='date'><img src='../images/calendar.svg' alt='calendar'>Today is ". date('F jS Y') ."<br></div>";
                     echo "<a href='addTask.php?project=". $projectid ."' class='btn btn-primary' id='taskvisible'>+ Add task</a>";
-                    if (isset($_GET['project'])){
+                    
+                ?>
+            </div>
+            <?php
+            if (isset($_GET['project'])){
                         if($_GET['project'] == 0){
                             ?>
                             <script language="javascript">
-                                document.getElementById("taskvisible").style.display = "none";
+                                document.getElementById("invisible").style.display = "none";
                             </script>
                         <?
                             echo "<h2 class='homemessage'>Add or go to a project to get started<span>.</span></h2>";
@@ -62,13 +67,12 @@
                     }else{
                     ?>
                         <script language="javascript">
-                            document.getElementById("taskvisible").style.display = "none";
+                            document.getElementById("invisible").style.display = "none";
                         </script>
                     <?
                         echo "<h2 class='homemessage'>Add or go to a project to get started<span>.</span></h2>";
                     }
-                ?>
-            </div>
+            ?>
             <ul class="task_list">
                
                
@@ -79,10 +83,19 @@
                         $usertask = $task['userid'] = $row[2];
                         $task['taskid'] = $row[3];
                         $users = $conn->query("SELECT * FROM users WHERE id = $usertask;"); 
+                        $deadline = strtotime($task['deadline']);
+                        $dagenresterend = floor(($deadline-time())/(60*60*24)+1);
+                        
                         foreach ($users as $row) {
                             $taskCreator = $row['username'];
                         }   
-                        echo "<li><a href='home.php?task=" . $task['taskid'] . "'>" . $task['name'] . "</a><h4>Deadline due " . $task['deadline'] . "</h4><h4>By " . $taskCreator . "</h4></li>";
+                        if (strpos($dagenresterend, '-') !== false){
+                            echo "<li><a href='home.php?task=" . $task['taskid'] . "'>" . $task['name'] . "</a><span class='colorred'>Nog " . $dagenresterend . " dagen resterend. Deadline is in the past</span><h4>Deadline due " . $task['deadline'] . "</h4><h4>By " . $taskCreator . "</h4></li>";
+                        } else {
+                            echo "<li><a href='home.php?task=" . $task['taskid'] . "'>" . $task['name'] . "</a><span class='colorblue'>Nog " . $dagenresterend . " dagen resterend.</span><h4>Deadline due " . $task['deadline'] . "</h4><h4>By " . $taskCreator . "</h4></li>";
+                        }
+                        
+                        
                     }  
                 ?>
                 <!--

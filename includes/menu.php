@@ -98,7 +98,6 @@
                 $project['course'] = $row[2];
                 echo "<li><a href='home.php?project=" . $project['projectid'] . "'>" . $project['name'] . "</a><h4>" . $project['course'] . "</h4></li>";
             }  
-            echo "today is". date("Y-m-d") ."<br>";
             ?>
         </ul>
         

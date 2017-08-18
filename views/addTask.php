@@ -60,8 +60,7 @@
                    <div class="lowerForm">
                        <input type="text" name="taskname" class="textfield" placeholder="Project name">
                        <input type="text" name="deadline" id="date2" alt="date" class="IP_calendar" title="Y-m-d" placeholder="Deadline">
-                       <input type='submit' class='btn btn-primary' name='addtask' value='Add Task'/><br><br><br><br>
-                       <a href="../views/home.php">Back</a>
+                       <input type='submit' class='btn btn-primary' name='addtask' value='Add Task'/><br>
                    </div>
                </form>
                
